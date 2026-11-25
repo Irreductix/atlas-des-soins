@@ -41,8 +41,10 @@
   }
 
   function voirDepartement(d) {
-    carte.fitBounds([[d.boite[0], d.boite[1]], [d.boite[2], d.boite[3]]], { maxZoom: 13, padding: [20, 20] });
-    if (carte.getZoom() < ZOOM_POINTS) carte.setZoom(ZOOM_POINTS);
+    // Le zoom se calcule avant de bouger : pendant l'animation, la carte annonce encore l'ancien zoom et l'ancien centre.
+    const emprise = L.latLngBounds([d.boite[0], d.boite[1]], [d.boite[2], d.boite[3]]);
+    const zoom = Math.max(ZOOM_POINTS, Math.min(13, carte.getBoundsZoom(emprise, false, [20, 20])));
+    carte.setView(emprise.getCenter(), zoom);
   }
 
   async function charger(code) {

@@ -19,8 +19,12 @@
 
   const carte = L.map('carte', { zoomControl: false, preferCanvas: true, minZoom: 3 }).setView([46.6, 2.4], 6);
   L.control.zoom({ position: 'bottomright' }).addTo(carte);
-  L.tileLayer('https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&STYLE=normal&FORMAT=image/png&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
-    { maxZoom: 18, className: 'fond', attribution: 'Fond de carte : Plan IGN, <a href="https://geoservices.ign.fr/">IGN</a> · Données : FINESS (ANS), HAS' }).addTo(carte);
+  // Le Plan IGN porte ses noms de lieux dans l'image. De loin, on affiche les images du niveau de zoom précédent,
+  // agrandies : seules les villes importantes y sont nommées. De près, les images normales, avec tous les noms.
+  const PLAN = 'https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&STYLE=normal&FORMAT=image/png&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}';
+  const SOURCES = 'Fond de carte : Plan IGN, <a href="https://geoservices.ign.fr/">IGN</a> · Données : FINESS (ANS), HAS';
+  L.tileLayer(PLAN, { minZoom: 3, maxZoom: 12, tileSize: 512, zoomOffset: -1, className: 'fond', attribution: SOURCES }).addTo(carte);
+  L.tileLayer(PLAN, { minZoom: 13, maxZoom: 18, className: 'fond', attribution: SOURCES }).addTo(carte);
   const coucheBulles = L.layerGroup().addTo(carte);
   const couchePoints = L.layerGroup().addTo(carte);
 

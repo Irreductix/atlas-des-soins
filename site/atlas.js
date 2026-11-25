@@ -5,8 +5,9 @@
   const O = window.AtlasOutils;
   const { echapper, titre } = O;
   const $ = (id) => document.getElementById(id);
-  const COULEURS = ['#eda809', '#faf2e6', '#7f93a8', '#86a77f', '#b49bb8', '#5f6878', '#c9a27e', '#8fb3ad', '#77706a', '#454c5a'];
-  const RAYONS = [8, 6, 4.5, 4, 3.5, 2.5, 3.5, 3.5, 3, 3];
+  // Une teinte franche par famille, choisies pour se distinguer entre elles sur le fond sombre : or, ivoire, violet, bleu, turquoise, vert, orange, rose, puis deux gris pour le reste.
+  const COULEURS = ['#eda809', '#faf2e6', '#a98bff', '#4da3ff', '#3fd0d4', '#35c46a', '#ff9455', '#f06fb0', '#8f9bb3', '#5c6475'];
+  const RAYONS = [8.5, 6.5, 5, 4.5, 4, 3.5, 4, 4, 3.5, 3.5];
   const ZOOM_POINTS = 9; // en dessous, une bulle par département
   const AUJOURDHUI = new Date().toISOString().slice(0, 10);
 

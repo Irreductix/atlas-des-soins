@@ -1,0 +1,13 @@
+{
+  "name": "atlas-des-soins",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "L'atlas des soins : la carte des établissements de santé de France, avec une fiche détaillée pour chacun.",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\"",
+    "construire": "node scripts/construire.mjs"
+  }
+}

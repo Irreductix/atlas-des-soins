@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'atlas des soins</title>
+<meta name="description" content="La carte des établissements de santé de France : hôpitaux, cliniques, centres de santé, pharmacies, établissements sociaux et médico-sociaux. Pour chacun, une fiche : autorisations, activité, certification, satisfaction des patients.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://data.geopf.fr; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="marque" href="./" aria-label="L'atlas des soins, accueil">
+    <img src="irreductix-logo-sombre-transparent.svg" alt="Irréductix">
+    <span class="titre">L'atlas des soins</span>
+  </a>
+  <div class="recherche" role="search">
+    <input type="search" id="recherche" placeholder="Chercher un hôpital, une clinique, une commune" autocomplete="off" aria-label="Chercher un établissement" aria-controls="resultats">
+    <ul id="resultats" role="listbox" hidden></ul>
+  </div>
+  <nav class="liens"><a href="#a-propos">À propos et sources</a></nav>
+</header>
+
+<div id="carte" aria-label="Carte des établissements de santé de France"></div>
+
+<aside class="legende repliee" id="legende" aria-label="Types d'établissements">
+  <button class="replier" id="replier" type="button">Types d'établissements et territoires</button>
+  <h2>Sur la carte</h2>
+  <p id="resume">Chargement…</p>
+  <div id="familles"></div>
+  <div class="territoires" id="territoires" aria-label="Aller à un territoire"></div>
+</aside>
+
+<div class="voile" id="voile"><article class="fiche" id="fiche" role="dialog" aria-modal="true" aria-labelledby="nom"></article></div>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="outils.js"></script>
+<script src="atlas.js"></script>
+</body>
+</html>
